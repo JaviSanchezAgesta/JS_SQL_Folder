@@ -1,0 +1,73 @@
+** List of revenue by genre
+
+SELECT SUM(amount) AS total_genre_revenue, 
+F.name AS genre
+FROM payment A
+INNER JOIN rental B ON A.rental_id = B.rental_id
+INNER JOIN inventory C ON B.inventory_id = C.inventory_id
+INNER JOIN film D ON C.film_id = D.film_id
+INNER JOIN film_category E ON D.film_id = E.film_id
+INNER JOIN category F ON E.category_id = F.category_id
+GROUP by genre
+ORDER BY sum_revenue DESC
+ 
+** List rental duration by genre
+
+SELECT AVG(rental_duration) AS average_days_rented, 
+C.name AS genre				
+FROM film A				
+INNER JOIN film_category B ON A.film_id = B.film_id				
+INNER JOIN category C ON B.category_id = C.category_id				
+GROUP BY genre	
+ORDER BY average_days_rented DESC
+
+
+**List od top 10 movies on revenue
+
+SELECT D.title, F.name AS genre, 
+SUM(amount) AS total_revenue				
+FROM payment A				
+INNER JOIN rental B ON A.rental_id = B.rental_id				
+INNER JOIN inventory C ON B.inventory_id = C.inventory_id				
+INNER JOIN film D ON C.film_id = D.film_id				
+INNER JOIN film_category E ON D.film_id = E.film_id				
+INNER JOIN category F ON E.category_id = F.category_id				
+GROUP BY D.title, genre				
+ORDER BY total_revenue DESC
+
+
+**List bottom 10 movies revenue
+
+SELECT D.title, F.name AS genre, 
+SUM(amount) AS total_revenue				
+FROM payment A				
+INNER JOIN rental B ON A.rental_id = B.rental_id				
+INNER JOIN inventory C ON B.inventory_id = C.inventory_id				
+INNER JOIN film D ON C.film_id = D.film_id				
+INNER JOIN film_category E ON D.film_id = E.film_id				
+INNER JOIN category F ON E.category_id = F.category_id				
+GROUP BY D.title, genre				
+ORDER BY total_revenue ASC
+Numb of customers and total payment by country
+SELECT country.country,
+COUNT (DISTINCT customer.customer_id) AS all_customer_count,
+SUM (payment.amount) AS total_amount_paid
+FROM payment 
+INNER JOIN customer ON payment.customer_id=customer.customer_id
+INNER JOIN address ON customer.address_id = address.address_id
+INNER JOIN city ON address.city_id = city.city_id
+INNER JOIN country ON city.country_id=country.country_id
+GROUP BY country.country
+ORDER BY COUNT (DISTINCT customer.customer_id) DESC
+Top 5 Customers in top 10 countries
+SELECT customer.first_name, customer.last_name, country.country, 
+SUM (payment.amount) AS total_amount_paid
+FROM payment 
+INNER JOIN customer ON payment.customer_id=customer.customer_id
+INNER JOIN address ON customer.address_id = address.address_id
+INNER JOIN city ON address.city_id = city.city_id
+INNER JOIN country ON city.country_id=country.country_id
+WHERE country.country IN ('India','China','United States', 'Japan','Mexico','Brazil','Russian Federation', 'Philippines', 'Turkey', 'Indonesia')
+GROUP BY customer.first_name, customer.last_name, country.country
+ORDER BY total_amount_paid DESC
+LIMIT 5
