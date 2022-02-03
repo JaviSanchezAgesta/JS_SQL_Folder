@@ -9,15 +9,17 @@ This folder contains the process of learning SQL through the study of a ficticiu
 
 The data set contains information about the following parameters: 
 
-•	Orders
-•	Products
-•	Departments
+•	
+•
+•	
 The full details of the data are available (here, hyperlink)
-Tools 
-For this project the following Python libraries were used:
-Pandas- for data analysis
-Seaborn-for visualization
-Executing the code
+
+## Tools
+
+For this project we used PostgreSQL as a RDBMS (Relational Database Management System)
+
+## Executing the code
+
 The code is available as jupyter notebooks, available under /scripts/
 To launch the notebook, open the terminal and run the command 
 Importing data: jupyter notebook ImportData.ipynb
