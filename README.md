@@ -43,5 +43,17 @@ For this project we used PostgreSQL as a RDBMS (Relational Database Management S
 
 The code is available as text, ready to be copied and pasted in PostgreSQL query box and be executed. It may work in different RBDMS or might have slightly different syntax, but the main commands are common to other systems.
 
+## Relevant files
+
+Together with the few commands, I added some files that help with the context and put sense to the analysis:
+
++ Data Dictionary
+
++ Constraints table 
+
++ SQL list of queries in Word format
+
++ Presentation about Rockbuster with insights
+
 
 
