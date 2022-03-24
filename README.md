@@ -1,5 +1,5 @@
-# JS_SQL_Folder
-SQL Data Analytics Projects
+# Rockbuster Analysis - Postgre SQL
+Data Analytics Project by Javier Sanchez Agesta
 
 ## Objective
 
